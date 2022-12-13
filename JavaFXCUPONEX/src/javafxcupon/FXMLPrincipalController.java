@@ -35,7 +35,7 @@ public class FXMLPrincipalController implements Initializable {
     }
     
     @FXML
-    public void clicIrAdminMedicos(ActionEvent event) {
+    public void clicIrAdminUsuarios(ActionEvent event) {
         try{
             Parent vistaAdminUsuarios = FXMLLoader.load(getClass().getResource("FXMLAdminUsuarios.fxml"));
             Scene scenaUsuario = new Scene(vistaAdminUsuarios);
@@ -56,12 +56,7 @@ public class FXMLPrincipalController implements Initializable {
     }
 
     @FXML
-    public void clicIrAdminPacientes (ActionEvent event){
-        
-    }
-    
-    @FXML
-    public void clicIrAdminAlimentos(ActionEvent event){
+    public void clicIrAdminEmpresas (ActionEvent event){
         
     }
     
