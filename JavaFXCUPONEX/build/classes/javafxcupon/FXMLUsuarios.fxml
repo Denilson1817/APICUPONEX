@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="329.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxcupon.FXMLUsuariosController">
+   <children>
+      <TextField fx:id="tfNombre" layoutX="35.0" layoutY="80.0" promptText="Nombre" />
+      <TextField fx:id="tfCorreo" layoutX="35.0" layoutY="138.0" promptText="Correo" />
+      <TextField fx:id="tfIdEstatus" layoutX="419.0" layoutY="138.0" promptText="IdEstatus" />
+      <TextField fx:id="tfPassword" layoutX="227.0" layoutY="138.0" promptText="Password" />
+      <TextField fx:id="tfApellidoPaterno" layoutX="227.0" layoutY="80.0" promptText="Apellido Paterno" />
+      <TextField fx:id="tfApellidoMaterno" layoutX="419.0" layoutY="80.0" promptText="Apellido Materno" />
+      <Label layoutX="185.0" layoutY="25.0" prefHeight="25.0" prefWidth="257.0" text="Alta de nuevo usuario">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <Button layoutX="475.0" layoutY="253.0" mnemonicParsing="false" onAction="#btCancelar" text="Cancelar" />
+      <Button layoutX="84.0" layoutY="253.0" mnemonicParsing="false" onAction="#btGuardar" text="Guardar" />
+   </children>
+</AnchorPane>

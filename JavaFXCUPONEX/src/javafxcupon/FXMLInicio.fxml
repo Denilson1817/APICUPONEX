@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="248.0" prefWidth="430.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxcupon.FXMLinicioController">
+   <children>
+      <Label alignment="TOP_CENTER" layoutX="93.0" layoutY="23.0" prefHeight="48.0" prefWidth="245.0" text="CUPONEX">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Label>
+      <Button layoutX="176.0" layoutY="209.0" mnemonicParsing="false" onAction="#clicIniciarSesion" prefHeight="25.0" prefWidth="80.0" text="Ingresar" />
+      <Label fx:id="lbResultado" layoutX="17.0" layoutY="177.0" prefHeight="15.0" prefWidth="401.0" />
+      <TextField fx:id="tfNumeroPersonal" layoutX="134.0" layoutY="71.0" promptText="Usuario" />
+      <PasswordField fx:id="pfPassword" layoutX="134.0" layoutY="130.0" promptText="Contraseña" />
+   </children>
+</AnchorPane>

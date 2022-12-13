@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="javafxfuitn.FXMLPacienteController">
+   <children>
+      <Label layoutX="51.0" layoutY="25.0" text="Nombre y apellido" />
+      <TextField layoutX="51.0" layoutY="47.0" />
+      <TextField layoutX="51.0" layoutY="110.0" />
+      <Label layoutX="53.0" layoutY="83.0" text="Fecha de nacimiento" />
+      <TextField layoutX="51.0" layoutY="168.0" />
+      <Label layoutX="53.0" layoutY="145.0" text="genero" />
+      <Label layoutX="49.0" layoutY="336.0" text="Peso" />
+      <Label layoutX="49.0" layoutY="273.0" text="Estatura" />
+      <Label layoutX="345.0" layoutY="18.0" text="Talla inicial" />
+      <Label layoutX="346.0" layoutY="153.0" text="Email" />
+      <Label layoutX="337.0" layoutY="281.0" text="Contraseña" />
+      <Label layoutX="345.0" layoutY="83.0" text="Télefono" />
+      <Label layoutX="344.0" layoutY="226.0" text="Domicilio" />
+      <Label layoutX="51.0" layoutY="208.0" text="Usuario" />
+      <TextField layoutX="51.0" layoutY="233.0" />
+      <TextField layoutX="51.0" layoutY="298.0" />
+      <TextField layoutX="49.0" layoutY="361.0" />
+      <TextField layoutX="346.0" layoutY="47.0" />
+      <TextField layoutX="346.0" layoutY="110.0" />
+      <TextField layoutX="346.0" layoutY="181.0" />
+      <TextField layoutX="344.0" layoutY="246.0" />
+      <TextField layoutX="337.0" layoutY="311.0" />
+      <Label layoutX="342.0" layoutY="344.0" text="Medico" />
+      <TextField layoutX="337.0" layoutY="361.0" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="javafxfuitn.FXMLAlimentosController">
+   <children>
+      <Label layoutX="47.0" layoutY="45.0" text="Nombre del alimento" />
+      <TextField layoutX="47.0" layoutY="83.0" />
+      <Label layoutX="47.0" layoutY="139.0" text="Calorías por porcion" />
+      <TextField layoutX="47.0" layoutY="168.0" />
+      <Label layoutX="47.0" layoutY="217.0" text="Cantidad" />
+      <TextField layoutX="47.0" layoutY="242.0" />
+      <Label layoutX="47.0" layoutY="285.0" text="Porcion" />
+      <TextField layoutX="47.0" layoutY="315.0" />
+   </children>
+</AnchorPane>
