@@ -24,7 +24,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 
                 <property name="username" value="root"/>    
 
-                <property name="password" value="coches3"/>
+                <property name="password" value="123456789"/>
 
                 <property name="poolMaximumActiveConnections" value="50"/>
 

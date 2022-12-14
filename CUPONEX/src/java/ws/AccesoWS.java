@@ -12,7 +12,10 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.UriInfo;
+import mybatis.MyBatisUtil;
+import org.apache.ibatis.session.SqlSession;
 import pojos.RespuestaLogin;
+import pojos.Usuario;
 
 /**
  *
@@ -26,23 +29,49 @@ public class AccesoWS {
     @Path("escritorio")
     @POST
     @Produces(MediaType.APPLICATION_JSON)
-    public RespuestaLogin iniciarSesionEscritorio(
-            @FormParam("user") String user,
+     public RespuestaLogin iniciarSesionEscritorio(
+            @FormParam("nombre") String nombre,
             @FormParam("password") String password){
-        RespuestaLogin respuestaWS = new RespuestaLogin(); 
+        RespuestaLogin respuesta = new RespuestaLogin(); 
+        //temporal
        
-        if(user.equals("Admin") && password.equals("qwerty")){
-            respuestaWS.setError(false);
-            respuestaWS.setMensaje("Usuario correcto...");
-            respuestaWS.setNombre("USER");
-            respuestaWS.setApellidoParterno("ADMIN");
+        Usuario usuario = new Usuario();
+        usuario.setNombre(nombre);
+        usuario.setPassword(password);
+        
+       
+        SqlSession conexionBD = new MyBatisUtil().getSession();
+        
+        if(conexionBD != null){
+            try{
+                
+               int usuario1 = conexionBD.selectOne("usuarios.usuarioLogin", usuario);
+                conexionBD.commit();
+                
+                if(usuario1 >0){
+                    respuesta.setError(false);
+                    respuesta.setMensaje("Bienvenido " + usuario.getNombre());
+                    
+                }else{
+                    respuesta.setError(true);
+                    respuesta.setMensaje("Usuario no encontrado, verifica tu estatus");
+                    
+                }
+            }catch(Exception e){
+                respuesta.setError(true);
+                respuesta.setMensaje(e.getMessage());
+                //respuesta.setMensaje("Usuario no encontrado, verifica tu estatus");
+
+            }finally{
+                conexionBD.close();
+            }
         }else{
-            respuestaWS.setError(true);
-            respuestaWS.setMensaje("Credenciales de acceso incorrectas");
+            respuesta.setError(true);
+            respuesta.setMensaje("Servicio no disponible, intentelo más tarde.");
         }
-        return respuestaWS;
-    }
-    
+        
+        return respuesta;
+    }    
 }
 
 
