@@ -15,6 +15,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
 import mybatis.MyBatisUtil;
 import org.apache.ibatis.session.SqlSession;
@@ -35,8 +36,9 @@ public class UsuariosWS {
     /**
      * Creates a new instance of MedicosWS
      */
-    public UsuariosWS() {
-    }
+    
+    
+    
     
     
     @Path("all")
@@ -55,6 +57,25 @@ public class UsuariosWS {
             }
         }
         return listaUsuarios;
+    }
+    
+    @Path("byId/{id}")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Usuario buscarUsuarioID(
+        @PathParam("idUsuario") Integer idUsuario){
+        Usuario usuario = null;
+        SqlSession conexionBD = mybatis.MyBatisUtil.getSession();
+        if(conexionBD != null){
+            try{
+                usuario = conexionBD.selectOne("usuarios.getById", idUsuario);
+            }catch(Exception e){
+                e.printStackTrace();
+            }finally{
+                conexionBD.close();
+            }
+        }
+        return usuario;
     }
     
     @Path("registrar")
@@ -111,15 +132,14 @@ public class UsuariosWS {
             @FormParam("nombre") String nombre,
             @FormParam("apellidoPaterno") String apellidoPaterno, 
             @FormParam("apellidoMaterno") String apellidoMaterno,
-            @FormParam("password") String password,
-            @FormParam("idEstatus") String idEstatus){
+            @FormParam("password") String password){
         Usuario usuarioNuevo = new Usuario();
         usuarioNuevo.setIdUsuario(IdUsuario);
         usuarioNuevo.setNombre(nombre);
         usuarioNuevo.setApellidoPaterno(apellidoPaterno);
         usuarioNuevo.setApellidoMaterno(apellidoMaterno);
         usuarioNuevo.setPassword(password);
-        usuarioNuevo.setIdEstatus(idEstatus);
+        //usuarioNuevo.setIdEstatus(idEstatus);
         
         Respuesta respuestaWS = new Respuesta();
         SqlSession conexionBD = MyBatisUtil.getSession();

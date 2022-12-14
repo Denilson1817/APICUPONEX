@@ -10,6 +10,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         FROM usuarios WHERE nombre = #{nombre} AND password = #{password}
     </select>
     
+    <select id="getById" resultType="pojos.Usuario" parameterType="int" >
+        SELECT * FROM usuarios WHERE idUsuario = #{idUsuario}
+        
+    </select>
+    
     <select id="getAllUsuarios" resultType="pojos.Usuario"> 
        SELECT idUsuario, usuarios.nombre,apellidoPaterno, apellidoMaterno, correo, password, idEstatus
         FROM usuarios
@@ -18,7 +23,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     
     <insert id = "registrar" parameterType="pojos.Usuario" > 
     INSERT INTO usuarios (idUsuario, nombre, apellidoPaterno, apellidoMaterno, correo, password, idEstatus)
-    VALUES (#{idUsuario},#{nombre},#{apellidoPaterno}, #{apellidoMaterno}, #{correo},#{password},201)
+    VALUES (#{idUsuario},#{nombre},#{apellidoPaterno}, #{apellidoMaterno}, #{correo},#{password},1)
     </insert>
     
     <update id="modificar" parameterType ="pojos.Usuario"> 
