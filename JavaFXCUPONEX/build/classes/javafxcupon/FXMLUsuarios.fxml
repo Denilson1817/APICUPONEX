@@ -12,7 +12,6 @@
    <children>
       <TextField fx:id="tfNombre" layoutX="35.0" layoutY="80.0" promptText="Nombre" />
       <TextField fx:id="tfCorreo" layoutX="35.0" layoutY="138.0" promptText="Correo" />
-      <TextField fx:id="tfIdEstatus" layoutX="419.0" layoutY="138.0" promptText="IdEstatus" />
       <TextField fx:id="tfPassword" layoutX="227.0" layoutY="138.0" promptText="Password" />
       <TextField fx:id="tfApellidoPaterno" layoutX="227.0" layoutY="80.0" promptText="Apellido Paterno" />
       <TextField fx:id="tfApellidoMaterno" layoutX="419.0" layoutY="80.0" promptText="Apellido Materno" />

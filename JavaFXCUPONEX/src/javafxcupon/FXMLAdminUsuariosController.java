@@ -40,7 +40,7 @@ import javafxcuponex.util.Utilidades;
 public class FXMLAdminUsuariosController implements Initializable {
     
     @FXML
-    private TextField tfBusquedaUsuario;
+    public TextField tfBusquedaUsuario;
     @FXML
     private TableView<Usuarios> tbUsuarios;
     @FXML
@@ -121,6 +121,34 @@ public class FXMLAdminUsuariosController implements Initializable {
         
     }
     */
+
+    @FXML
+    private void clicModificarUsuario(ActionEvent event) {
+        try{
+            Parent vista = FXMLLoader.load(getClass().getResource("FXMLActualizaUsuario.fxml"));
+            Scene escenaFormulario = new Scene(vista);
+            Stage escenarioFormulario = new Stage();
+            escenarioFormulario.setScene(escenaFormulario);
+            escenarioFormulario.initModality(Modality.APPLICATION_MODAL);
+            escenarioFormulario.showAndWait();
+        }catch(IOException ex){
+            ex.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void clicIrEliminarUsuario(ActionEvent event) {
+        try{
+            Parent vista = FXMLLoader.load(getClass().getResource("FXMLUsuarios.fxml"));
+            Scene escenaFormulario = new Scene(vista);
+            Stage escenarioFormulario = new Stage();
+            escenarioFormulario.setScene(escenaFormulario);
+            escenarioFormulario.initModality(Modality.APPLICATION_MODAL);
+            escenarioFormulario.showAndWait();
+        }catch(IOException ex){
+            ex.printStackTrace();
+        }
+    }
     
     
 }

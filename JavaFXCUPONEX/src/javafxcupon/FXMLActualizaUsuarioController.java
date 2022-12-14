@@ -21,24 +21,26 @@ import javafxcuponex.modelo.ConexionServiciosWeb;
 import javafxcuponex.pojos.RespuestaLogin;
 import javafxcuponex.util.Constantes;
 import javafxcuponex.util.Utilidades;
+
 /**
  * FXML Controller class
  *
- * @author denilson
+ * @author javier
  */
-public class FXMLUsuariosController implements Initializable {
+public class FXMLActualizaUsuarioController implements Initializable {
 
     @FXML
     private TextField tfNombre;
     @FXML
-    private TextField tfCorreo;
-    @FXML
-    private TextField tfPassword;
-    @FXML
     private TextField tfApellidoPaterno;
     @FXML
     private TextField tfApellidoMaterno;
-    
+    @FXML
+    private TextField tfContrasena;
+    @FXML
+    private TextField tfCorreoElectronico;
+
+    FXMLAdminUsuariosController ac;
     /**
      * Initializes the controller class.
      */
@@ -46,58 +48,54 @@ public class FXMLUsuariosController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
-    
+
     @FXML
-    private void btGuardar(ActionEvent event)throws Exception {
-        //System.out.println("clic sobre el boton");
+    private void clicActualizarInformacion(ActionEvent event) {
+        String idUsuario = ac.tfBusquedaUsuario.getText();
         String nombre = tfNombre.getText();
         String apellidoPaterno = tfApellidoPaterno.getText();
         String apellidoMaterno = tfApellidoMaterno.getText();
-        String correo = tfCorreo.getText();
-        String password= tfPassword.getText();
+        String correo = tfCorreoElectronico.getText();
+        String password= tfContrasena.getText();
         //String idEstatus = tfIdEstatus.getText();
         
 
         if (!nombre.isEmpty() && !apellidoPaterno.isEmpty() && !apellidoMaterno.isEmpty()
                 &&!correo.isEmpty()  && !password.isEmpty()){
             //verificarInicioSesion(noPersonal, password);
-            guardarRegistro(nombre, apellidoPaterno,apellidoMaterno,correo, password);
+            //todo
+            recuperaDatosTabla();
+            actualizaRegistro(idUsuario,nombre, apellidoPaterno,apellidoMaterno,correo, password);
         }else{ 
             Utilidades.mostrarAlertaSimple("Campos requeridos", 
                     "Es necesario ingresar todos los campos", 
                     Alert.AlertType.WARNING);
         }
-        
     }
-    
-    
 
     @FXML
-    private void btCancelar(ActionEvent event) {
+    private void clicCancelar(ActionEvent event) {
         irPantallaAdmin();
-        //System.out.println("clic sobre el boton");
-
-        
     }
-
     
     
-    private void guardarRegistro(String nombre,String apellidoPaterno,String apellidoMaterno,
+    private void actualizaRegistro(String idUsuario,String nombre,String apellidoPaterno,String apellidoMaterno,
         String correo, String password){
         try{
-            String url = Constantes.URL_BASE + "usuarios/registrar";
-            String parametros = "nombre="+nombre+"&apellidoPaterno="+apellidoPaterno+"&apellidoMaterno="+apellidoMaterno+"&correo="+correo+"&password="+password;
+            String url = Constantes.URL_BASE + "usuarios/modificar";
+            String parametros = "IdUsuario="+idUsuario+"&nombre="+nombre+"&apellidoPaterno="+apellidoPaterno+"&apellidoMaterno="+apellidoMaterno+"&correo="+correo+"&password="+password;
+            
             String resultado = ConexionServiciosWeb.consumirServicioPOST(url, parametros);
             Gson gson = new Gson();
             RespuestaLogin respuesta = gson.fromJson(resultado, RespuestaLogin.class);
             respuesta.setNombre(nombre);
             if(!respuesta.getError()){
-                Utilidades.mostrarAlertaSimple("Registro guardado", "El usuario "+
-                respuesta.getNombre()+" fue registrado con exito ", Alert.AlertType.INFORMATION);
+                Utilidades.mostrarAlertaSimple("Registro modificado", "El usuario "+
+                respuesta.getNombre()+" fue modficado con exito ", Alert.AlertType.INFORMATION);
                 irPantallaAdmin();
                 
             }else{
-                Utilidades.mostrarAlertaSimple("Error al guardar el registro",
+                Utilidades.mostrarAlertaSimple("Error al modificar el registro",
                         respuesta.getMensaje(), Alert.AlertType.ERROR);
             }
         }catch (Exception e){
@@ -120,6 +118,9 @@ public class FXMLUsuariosController implements Initializable {
          Utilidades.mostrarAlertaSimple("Error", "Error al cargar la pantalla principal", Alert.AlertType.ERROR);  
          }  
     }
-
+    
+    private void recuperaDatosTabla(){
+        
+    }
     
 }
