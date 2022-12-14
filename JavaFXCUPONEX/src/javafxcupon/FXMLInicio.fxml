@@ -16,7 +16,7 @@
       </Label>
       <Button layoutX="176.0" layoutY="209.0" mnemonicParsing="false" onAction="#clicIniciarSesion" prefHeight="25.0" prefWidth="80.0" text="Ingresar" />
       <Label fx:id="lbResultado" layoutX="17.0" layoutY="177.0" prefHeight="15.0" prefWidth="401.0" />
-      <TextField fx:id="tfNumeroPersonal" layoutX="134.0" layoutY="71.0" promptText="Usuario" />
+      <TextField fx:id="tfNombre" layoutX="134.0" layoutY="71.0" promptText="Usuario" />
       <PasswordField fx:id="pfPassword" layoutX="134.0" layoutY="130.0" promptText="Contraseña" />
    </children>
 </AnchorPane>

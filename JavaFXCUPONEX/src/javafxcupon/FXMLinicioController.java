@@ -16,11 +16,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafxcuponex.modelo.ConexionServiciosWeb;
 import javafxcuponex.pojos.RespuestaLogin;
+import javafxcuponex.pojos.Usuarios;
 import javafxcuponex.util.Constantes;
 import javafxcuponex.util.Utilidades;
 
@@ -31,8 +33,10 @@ import javafxcuponex.util.Utilidades;
  */
 public class FXMLinicioController implements Initializable {
     
+   
+   
     @FXML
-    private TextField tfNumeroPersonal;
+    private TextField tfNombre;
     @FXML
     private PasswordField pfPassword;
     
@@ -44,15 +48,16 @@ public class FXMLinicioController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        
     }    
     
     @FXML
     private void clicIniciarSesion(ActionEvent event) throws Exception {          
-        String user = tfNumeroPersonal.getText();
+        String nombre = tfNombre.getText();
         String password = pfPassword.getText();
         
-        if (!user.isEmpty() && !password.isEmpty()){
-            verificarInicioSesion(user, password);
+        if (!nombre.isEmpty() && !password.isEmpty()){
+            verificarInicioSesion(nombre, password);
         }else{ 
             Utilidades.mostrarAlertaSimple("Campos requeridos", 
                     "Es necesario ingresar el numero de personal y/o contrasena", 
@@ -61,13 +66,15 @@ public class FXMLinicioController implements Initializable {
         
         }
     
-    private void verificarInicioSesion(String user, String password){
+    private void verificarInicioSesion(String nombre, String password){
         try{
             String url = Constantes.URL_BASE + "acceso/escritorio";
-            String parametros = "user="+user+"&password="+password;
+            String parametros = "nombre="+nombre+"&password="+password;
             String resultado = ConexionServiciosWeb.consumirServicioPOST(url, parametros);
             Gson gson = new Gson();
             RespuestaLogin respuesta = gson.fromJson(resultado, RespuestaLogin.class);
+            
+            respuesta.setNombre(nombre);
             if(!respuesta.getError()){
                 Utilidades.mostrarAlertaSimple("Usuario verificado", "Bienvenido "+
                         respuesta.getNombre()+" al sistema ", Alert.AlertType.INFORMATION);
@@ -89,7 +96,7 @@ public class FXMLinicioController implements Initializable {
        try{
            Parent vistaPrincipal = FXMLLoader.load(getClass().getResource("FXMLPrincipal.fxml"));
            Scene escenaPrincipal = new Scene(vistaPrincipal);
-           Stage escenarioBase = (Stage) tfNumeroPersonal.getScene().getWindow();
+           Stage escenarioBase = (Stage) tfNombre.getScene().getWindow();
            escenarioBase.setScene(escenaPrincipal);
            escenarioBase.show();
        }catch(IOException e){
