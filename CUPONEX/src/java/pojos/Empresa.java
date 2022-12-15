@@ -9,21 +9,25 @@ package pojos;
  *
  * @author denilson
  */
-public class Empresa {
+public class Empresa{
+
     private Integer idEmpresa;
-    private String nombre; 
-    private String nombreComercial; 
+    private String nombre;
+    private String nombreComercial;
     private String nombreRepresentante;
     private String email;
     private String direccion;
-    private String codigoPostal;
+    private Integer codigoPostal;
     private String ciudad;
-    private String telefono;
-    private String web;
-    private String RFC;
-    private String estatus;
+    private Integer telefono;
+    private String paginaWeb;
+    private String rfc;
+    private Integer idEstatus;
 
-    public Empresa(Integer idEmpresa, String nombre, String nombreComercial, String nombreRepresentante, String email, String direccion, String codigoPostal, String ciudad, String telefono, String web, String RFC, String estatus) {
+    public Empresa() {
+    }
+
+    public Empresa(Integer idEmpresa, String nombre, String nombreComercial, String nombreRepresentante, String email, String direccion, Integer codigoPostal, String ciudad, Integer telefono, String paginaWeb, String rfc, Integer idEstatus) {
         this.idEmpresa = idEmpresa;
         this.nombre = nombre;
         this.nombreComercial = nombreComercial;
@@ -33,12 +37,9 @@ public class Empresa {
         this.codigoPostal = codigoPostal;
         this.ciudad = ciudad;
         this.telefono = telefono;
-        this.web = web;
-        this.RFC = RFC;
-        this.estatus = estatus;
-    }
-
-    public Empresa() {
+        this.paginaWeb = paginaWeb;
+        this.rfc = rfc;
+        this.idEstatus = idEstatus;
     }
 
     public Integer getIdEmpresa() {
@@ -69,8 +70,8 @@ public class Empresa {
         return nombreRepresentante;
     }
 
-    public void setNombreRepresentante(String nombreRepresentante) {
-        this.nombreRepresentante = nombreRepresentante;
+    public void setNombreRepresentante(String nombreRepresentanteLegal) {
+        this.nombreRepresentante = nombreRepresentanteLegal;
     }
 
     public String getEmail() {
@@ -89,11 +90,11 @@ public class Empresa {
         this.direccion = direccion;
     }
 
-    public String getCodigoPostal() {
+    public Integer getCodigoPostal() {
         return codigoPostal;
     }
 
-    public void setCodigoPostal(String codigoPostal) {
+    public void setCodigoPostal(Integer codigoPostal) {
         this.codigoPostal = codigoPostal;
     }
 
@@ -105,38 +106,36 @@ public class Empresa {
         this.ciudad = ciudad;
     }
 
-    public String getTelefono() {
+    public Integer getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(String telefono) {
+    public void setTelefono(Integer telefono) {
         this.telefono = telefono;
     }
 
-    public String getWeb() {
-        return web;
+    public String getPaginaWeb() {
+        return paginaWeb;
     }
 
-    public void setWeb(String web) {
-        this.web = web;
+    public void setPaginaWeb(String paginaWeb) {
+        this.paginaWeb = paginaWeb;
     }
 
-    public String getRFC() {
-        return RFC;
+    public String getRfc() {
+        return rfc;
     }
 
-    public void setRFC(String RFC) {
-        this.RFC = RFC;
+    public void setRfc(String rfc) {
+        this.rfc = rfc;
     }
 
-    public String getEstatus() {
-        return estatus;
+    public Integer getIdEstatus() {
+        return idEstatus;
     }
 
-    public void setEstatus(String estatus) {
-        this.estatus = estatus;
+    public void setIdEstatus(Integer idEstatus) {
+        this.idEstatus = idEstatus;
     }
-    
-    
     
 }

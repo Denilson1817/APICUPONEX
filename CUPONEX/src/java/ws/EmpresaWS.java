@@ -67,12 +67,12 @@ public class EmpresaWS {
         @FormParam("nombreRepresentante") String nombreRepresentante,
         @FormParam("email") String email,
         @FormParam("direccion") String direccion,
-        @FormParam("codigoPostal") String codigoPostal,
+        @FormParam("codigoPostal") Integer codigoPostal,
         @FormParam("ciudad") String ciudad,
-        @FormParam("telefono") String telefono,
-        @FormParam("web") String web,
-        @FormParam("RFC") String RFC,
-        @FormParam("estatus") String estatus){
+        @FormParam("telefono") Integer telefono,
+        @FormParam("paginaWeb") String web,
+        @FormParam("rfc") String RFC,
+        @FormParam("idEstatus") Integer estatus){
         
         Empresa empresaNueva= new Empresa();
         empresaNueva.setIdEmpresa(idEmpresa);
@@ -84,9 +84,9 @@ public class EmpresaWS {
         empresaNueva.setCodigoPostal(codigoPostal);
         empresaNueva.setCiudad(ciudad);
         empresaNueva.setTelefono(telefono);
-        empresaNueva.setWeb(web);
-        empresaNueva.setRFC(RFC);
-        empresaNueva.setEstatus(estatus);
+        empresaNueva.setPaginaWeb(web);
+        empresaNueva.setRfc(RFC);
+        empresaNueva.setIdEstatus(estatus);
         
         Respuesta respuestaWS = new Respuesta();
         SqlSession conexionBD = MyBatisUtil.getSession();
@@ -121,17 +121,17 @@ public class EmpresaWS {
     @Produces(MediaType.APPLICATION_JSON)
     public Respuesta modificar(
     @FormParam("idEmpresa") Integer idEmpresa,
-    @FormParam("nombre") String nombre,
-    @FormParam("nombreComercial")String nombreComercial,
-    @FormParam("nombreRepresentante")String nombreRepresentante,
-    @FormParam("email")String email,
-    @FormParam("direccion")String direccion,
-    @FormParam("codigoPostal")String codigoPostal,
-    @FormParam("ciudad")String ciudad,
-    @FormParam("telefono")String telefono,
-    @FormParam("web")String web,
-    @FormParam("RFC") String RFC,
-    @FormParam("estatus")String estatus){
+        @FormParam("nombre") String nombre,
+        @FormParam("nombreComercial") String  nombreComercial,
+        @FormParam("nombreRepresentante") String nombreRepresentante,
+        @FormParam("email") String email,
+        @FormParam("direccion") String direccion,
+        @FormParam("codigoPostal") Integer codigoPostal,
+        @FormParam("ciudad") String ciudad,
+        @FormParam("telefono") Integer telefono,
+        @FormParam("paginaWeb") String web,
+        @FormParam("rfc") String RFC,
+        @FormParam("idEstatus") Integer estatus){
         
         Empresa empresaNueva= new Empresa();
         empresaNueva.setIdEmpresa(idEmpresa);
@@ -143,9 +143,9 @@ public class EmpresaWS {
         empresaNueva.setCodigoPostal(codigoPostal);
         empresaNueva.setCiudad(ciudad);
         empresaNueva.setTelefono(telefono);
-        empresaNueva.setWeb(web);
-        empresaNueva.setRFC(RFC);
-        empresaNueva.setEstatus(estatus);
+        empresaNueva.setPaginaWeb(web);
+        empresaNueva.setRfc(RFC);
+        empresaNueva.setIdEstatus(estatus);
         
         Respuesta respuestaWS = new Respuesta();
         SqlSession conexionBD = MyBatisUtil.getSession();

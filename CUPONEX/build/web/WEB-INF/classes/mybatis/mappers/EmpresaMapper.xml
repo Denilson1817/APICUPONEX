@@ -6,30 +6,28 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="empresas">
     
     <select id="getAllEmpresas" resultType="pojos.Empresa"> 
-        SELECT idEmpresa, empresa.nombre,nombreComercial, nombreRepresentante, email, direccion, codigoPostal,
-        ciudad, telefono, web, RFC, estatus
-        FROM empresa
-        WHERE estatus = 1 
+        SELECT * FROM empresa WHERE idEstatus = 301
     </select>
     
-    <insert id = "registrar" parameterType="pojos.Empresa" > 
-    INSERT INTO empresa (idEmpresa, nombre, nombreComercial, nombreRepresentante, email, direccion, 
-        codigoPostal, ciudad, telefono, web, RFC, estatus)
-    VALUES (#{idEmpresa},#{nombre},#{nombreComercial}, #{nombreRepresentante}, #{email},#{direccion}, 
-        #{codigoPostal}, #{ciudad}, #{telefono}, #{web}, #{RFC}, #{estatus})
+    <insert id="registrar" parameterType="pojos.Empresa">
+        INSERT INTO empresa (nombre, nombreComercial, nombreRepresentante,email, direccion,codigoPostal,ciudad,telefono,paginaWeb,rfc,idEstatus)
+        VALUES (#{nombre}, #{nombreComercial}, #{nombreRepresentante}, #{email}, #{direccion},
+               #{codigoPostal},#{ciudad},#{telefono},#{paginaWeb},#{rfc},#{idEstatus})
     </insert>
     
     <update id="modificar" parameterType ="pojos.Empresa"> 
     UPDATE empresa SET nombre = #{nombre}, nombreComercial = #{nombreComercial}, 
     nombreRepresentante = #{nombreRepresentante}, email = #{email}, direccion = #{direccion},
-    codigoPostal =#{codigoPostal}, ciudad =#{ciudad}, telefono =#{telefono}, web =#{web},
-    RFC =#{RFC}, estatus =#{estatus}
+    codigoPostal =#{codigoPostal}, ciudad =#{ciudad}, telefono =#{telefono}, paginaWeb =#{paginaWeb},
+    rfc =#{rfc}, idEstatus =#{idEstatus}
     WHERE idEmpresa =#{idEmpresa}
     </update>
     
-    <delete id="eliminar" parameterType="int">
-    UPDATE empresa SET estatus = 2
-    WHERE idEmpresa = #{idEmpresa}
-    </delete> 
+    
+    <update id="eliminar" parameterType="int">
+        DELETE FROM empresa
+        WHERE idEmpresa = #{idEmpresa}
+    </update>
+   
     
 </mapper>

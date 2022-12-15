@@ -34,9 +34,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </update>
 
     
-        
     <update id="eliminar" parameterType="int">
-    UPDATE usuarios SET idEstatus = 2
-    WHERE idUsuario = #{idUsuario}
+        DELETE FROM usuario
+        WHERE idUsuario = #{idUsuario}
     </update>
 </mapper>
