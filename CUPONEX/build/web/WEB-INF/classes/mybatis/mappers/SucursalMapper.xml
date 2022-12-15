@@ -27,8 +27,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     WHERE idSucursal =#{idSucursal}
     </update>
     
-    <delete id="eliminar" parameterType="int">
+    <update id="eliminar" parameterType="int">
     UPDATE sucursal SET idEstatus = 2
     WHERE idSucursal = #{idSucursal}
-    </delete> 
+    </update> 
 </mapper>

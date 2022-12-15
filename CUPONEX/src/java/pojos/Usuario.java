@@ -14,23 +14,27 @@ public class Usuario {
     private String nombre; 
     private String apellidoPaterno;
     private String apellidoMaterno;
-    private String correo; 
+    private String correo;
     private String password;
-
+    //complemento Movil
+    private String telefono;
+    private String direccion;
+    private String fechaNacimiento;
 
     public Usuario() {
     }
 
-    public Usuario(Integer idUsuario, String nombre, String apellidoPaterno, String apellidoMaterno, String correo, String password) {
+    public Usuario(Integer idUsuario, String nombre, String apellidoPaterno, String apellidoMaterno, String correo, String password, String telefono, String direccion, String fechaNacimiento) {
         this.idUsuario = idUsuario;
         this.nombre = nombre;
         this.apellidoPaterno = apellidoPaterno;
         this.apellidoMaterno = apellidoMaterno;
         this.correo = correo;
         this.password = password;
-        
+        this.telefono = telefono;
+        this.direccion = direccion;
+        this.fechaNacimiento = fechaNacimiento;
     }
-    
 
     public Integer getIdUsuario() {
         return idUsuario;
@@ -79,6 +83,31 @@ public class Usuario {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public String getFechaNacimiento() {
+        return fechaNacimiento;
+    }
+
+    public void setFechaNacimiento(String fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
+    }
+    
     
     
     

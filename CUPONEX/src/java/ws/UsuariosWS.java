@@ -38,9 +38,6 @@ public class UsuariosWS {
      */
     
     
-    
-    
-    
     @Path("all")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -82,19 +79,24 @@ public class UsuariosWS {
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     public Respuesta Registrar(
-            @FormParam("IdUsuario") Integer IdUsuario,
             @FormParam("nombre") String nombre,
             @FormParam("apellidoPaterno") String apellidoPaterno, 
             @FormParam("apellidoMaterno") String apellidoMaterno,
+            @FormParam("telefono") String telefono,
             @FormParam("correo") String correo,
+            @FormParam("direccion") String direccion,
+            @FormParam("fechaNacimiento") String fechaNacimiento,
             @FormParam("password") String password){
         
         Usuario usuarioNuevo = new Usuario();
-        usuarioNuevo.setIdUsuario(IdUsuario);
+        //usuarioNuevo.setIdUsuario(IdUsuario);
         usuarioNuevo.setNombre(nombre);
         usuarioNuevo.setApellidoPaterno(apellidoPaterno);
         usuarioNuevo.setApellidoMaterno(apellidoMaterno);
+        usuarioNuevo.setTelefono(telefono);
         usuarioNuevo.setCorreo(correo);
+        usuarioNuevo.setDireccion(direccion);
+        usuarioNuevo.setFechaNacimiento(fechaNacimiento);
         usuarioNuevo.setPassword(password);
         
         Respuesta respuestaWS = new Respuesta();

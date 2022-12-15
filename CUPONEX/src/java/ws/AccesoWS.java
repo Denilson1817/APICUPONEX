@@ -71,7 +71,52 @@ public class AccesoWS {
         }
         
         return respuesta;
-    }    
+    }
+     
+    @Path("movil")
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    public RespuestaLogin  iniciarSesionMovil(
+      @FormParam("nombre") String nombre,
+      @FormParam("password") String password){
+        
+        RespuestaLogin resp = new RespuestaLogin();
+        
+        Usuario usuario =  new Usuario();
+        usuario.setNombre(nombre);
+        usuario.setPassword(password);
+                
+        Usuario usuarioResultado = null;
+        
+        SqlSession conexionBD = mybatis.MyBatisUtil.getSession();
+        if (conexionBD != null) {
+            try{
+                usuarioResultado = conexionBD.selectOne("usuarios.usuarioLoginMovil",usuario);
+
+                conexionBD.commit();
+                if(usuarioResultado != null){
+
+                    resp.setError(false);
+                    resp.setMensaje("Bienvenido ");
+                    resp.setNombre(usuarioResultado.getNombre());
+                }else{
+                    resp.setError(true);
+                    resp.setMensaje("Error al iniciar sesión");
+                }
+            }catch(Exception e){
+                resp.setError(true);
+                resp.setMensaje(e.getMessage());
+            }finally{
+                conexionBD.close();
+            }
+        }else{
+            resp.setError(true);
+            resp.setMensaje("Sin conexión al sistema");
+        }        
+
+
+        return resp;
+    }
 }
 
 

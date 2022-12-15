@@ -6,9 +6,35 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="promociones">
     
     <select id="getAllPromociones" resultType="pojos.Promocion"> 
-       SELECT idPromocion, promociones.nombre,foto, descripcion, fechaInicio, fechaTermino, restricciones, tipo, porcentajeDescuento,
-        costo, categoria, estatus
+       SELECT idPromocion, promociones.nombre,foto, descripcion, fechaInicio, fechaTermino, restriccion, tipo, porcentajeDescuento,
+        costo, categoria, estatus, idEmpresa, idSucursal
         FROM promociones
         WHERE estatus = 1
     </select>
+    
+    
+    <insert id ="registrar" parameterType="pojos.Promocion">
+    INSERT INTO promociones (idPromocion, nombre, foto, descripcion, fechaInicio, fechaTermino, 
+        restriccion, tipo, porcentajeDescuento, costo, categoria, estatus, idEmpresa, idSucursal)
+    VALUES (#{idPromocion},#{nombre},#{foto}, #{descripcion}, #{fechaInicio}, #{fechaTermino}, 
+        #{restriccion}, #{tipo}, #{porcentajeDescuento}, #{costo}, #{categoria}, #{estatus}, #{idEmpresa}, #{idSucursal})
+    </insert>
+    
+    <update id="modificar" parameterType ="pojos.Promocion"> 
+    UPDATE promociones SET nombre =#{nombre}, foto =#{foto}, descripcion =#{descripcion},restriccion =#{restriccion}, 
+        tipo =#{tipo}, porcentajeDescuento =#{porcentajeDescuento},
+        costo =#{costo}, categoria =#{categoria}, estatus =#{estatus}, idEmpresa =#{idEmpresa}, idSucursal=#{idSucursal}
+    WHERE
+        idPromocion =#{idPromocion}
+    </update>
+    
+        
+    <update id="eliminar" parameterType="int">
+    UPDATE promociones SET estatus = 2
+    WHERE idPromocion = #{idPromocion}
+    </update> 
+    
+    
+    
+    
 </mapper>

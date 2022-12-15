@@ -16,26 +16,30 @@ public class Promocion {
     private String descripcion;
     private String fechaInicio;
     private String fechaTermino;
-    private String restricciones;
+    private String restriccion;
     private String tipo;
     private String porcentajeDescuento;
     private int costo;
     private String categoria;
-    private String estatus; 
+    private String estatus;
+    private String idEmpresa;
+    private String idSucursal;
 
-    public Promocion(Integer idPromocion, String nombre, String foto, String descripcion, String fechaInicio, String fechaTermino, String restricciones, String tipo, String porcentajeDescuento, int costo, String categoria, String estatus) {
+    public Promocion(Integer idPromocion, String nombre, String foto, String descripcion, String fechaInicio, String fechaTermino, String restriccion, String tipo, String porcentajeDescuento, int costo, String categoria, String estatus, String idEmpresa, String idSucursal) {
         this.idPromocion = idPromocion;
         this.nombre = nombre;
         this.foto = foto;
         this.descripcion = descripcion;
         this.fechaInicio = fechaInicio;
         this.fechaTermino = fechaTermino;
-        this.restricciones = restricciones;
+        this.restriccion = restriccion;
         this.tipo = tipo;
         this.porcentajeDescuento = porcentajeDescuento;
         this.costo = costo;
         this.categoria = categoria;
         this.estatus = estatus;
+        this.idEmpresa = idEmpresa;
+        this.idSucursal = idSucursal;
     }
 
     public Promocion() {
@@ -89,12 +93,12 @@ public class Promocion {
         this.fechaTermino = fechaTermino;
     }
 
-    public String getRestricciones() {
-        return restricciones;
+    public String getRestriccion() {
+        return restriccion;
     }
 
-    public void setRestricciones(String restricciones) {
-        this.restricciones = restricciones;
+    public void setRestriccion(String restriccion) {
+        this.restriccion = restriccion;
     }
 
     public String getTipo() {
@@ -137,6 +141,20 @@ public class Promocion {
         this.estatus = estatus;
     }
     
+    public String getIdEmpresa(){
+        return idEmpresa;
+    }
     
+    public void setIdEmpresa(String idEmpresa){
+        this.idEmpresa = idEmpresa;
+    }
+    
+    public String getIdSucursal(){
+        return idSucursal;
+    }
+    
+    public void setIdSucursal(String idSucursal){
+        this.idSucursal = idSucursal;
+    }
     
 }
