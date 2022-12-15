@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="525.0" prefWidth="718.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxcupon.FXMLAgregaEmpresaController">
+   <children>
+      <TextField fx:id="tfIdEmpresa" disable="true" editable="false" layoutX="38.0" layoutY="106.0" promptText="IdEmpresa" />
+      <TextField fx:id="tfNombre" layoutX="32.0" layoutY="184.0" promptText="Nombre" />
+      <TextField fx:id="tfNombreComercial" layoutX="32.0" layoutY="263.0" promptText="Nombre comercial" />
+      <TextField fx:id="tfNombreRepresentante" layoutX="32.0" layoutY="337.0" promptText="Nombre representante" />
+      <TextField fx:id="tfCorreo" layoutX="307.0" layoutY="106.0" promptText="Correo" />
+      <TextField fx:id="tfDireccion" layoutX="307.0" layoutY="178.0" promptText="Direccion" />
+      <TextField fx:id="tfCP" layoutX="307.0" layoutY="256.0" promptText="Codigo postal" />
+      <TextField fx:id="tfCiudad" layoutX="307.0" layoutY="337.0" promptText="Ciudad" />
+      <TextField fx:id="tfTelefono" layoutX="543.0" layoutY="106.0" promptText="Telefono" />
+      <TextField fx:id="tfPaginaWeb" layoutX="543.0" layoutY="178.0" promptText="Pagina web" />
+      <TextField fx:id="tfRFC" layoutX="543.0" layoutY="256.0" promptText="rfc" />
+      <TextField fx:id="tfIdEstatus" layoutX="543.0" layoutY="337.0" promptText="idEstatus" />
+      <Label layoutX="63.0" layoutY="46.0" text="Registrar nueva empresa">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnGuardar" layoutX="611.0" layoutY="453.0" mnemonicParsing="false" onAction="#clicGuardar" prefHeight="27.0" prefWidth="89.0" text="Guardar" />
+      <Button fx:id="btnCancear" layoutX="499.0" layoutY="453.0" mnemonicParsing="false" onAction="#clicCancelar" prefHeight="27.0" prefWidth="89.0" text="Cancelar" />
+   </children>
+</AnchorPane>

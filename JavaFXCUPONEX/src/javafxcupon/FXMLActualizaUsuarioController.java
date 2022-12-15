@@ -24,6 +24,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafxcuponex.modelo.ConexionServiciosWeb;
+import javafxcuponex.pojos.Respuesta;
 import javafxcuponex.pojos.RespuestaLogin;
 import javafxcuponex.pojos.Usuarios;
 import javafxcuponex.util.Constantes;
@@ -63,79 +64,6 @@ public class FXMLActualizaUsuarioController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
-
-    public void inicializarInformacionVentana(int idUsuario, String nombre, String aPaterno, String aMaterno, String correo, String password){
-        this.idUsuario = idUsuario;      
-        tfCorreoElectronico.setDisable(true);
-        tfNombre.setText(nombre);
-        tfApellidoPaterno.setText(aPaterno);
-        tfApellidoMaterno.setText(aMaterno);
-        tfCorreoElectronico.setText(correo);
-        tfContrasena.setText(password);
-    }
-
-
-    @FXML
-    private void clicActualizarInformacion(ActionEvent event) {
-        //String idUsuario = ac.tfBusquedaUsuario.getText();
-        String nombre = tfNombre.getText();
-        String apellidoPaterno = tfApellidoPaterno.getText();
-        String apellidoMaterno = tfApellidoMaterno.getText();
-        String correo = tfCorreoElectronico.getText();
-        String password= tfContrasena.getText();
-        //String idEstatus = tfIdEstatus.getText();
-        
-
-        if (!nombre.isEmpty() && !apellidoPaterno.isEmpty() && !apellidoMaterno.isEmpty()
-                &&!correo.isEmpty()  && !password.isEmpty()){
-            //verificarInicioSesion(noPersonal, password);
-            //todo
-            //recuperaDatosTabla();
-            actualizaRegistro(nombre, apellidoPaterno,apellidoMaterno,correo, password);
-        }else{ 
-            Utilidades.mostrarAlertaSimple("Campos requeridos", 
-                    "Es necesario ingresar todos los campos", 
-                    Alert.AlertType.WARNING);
-        }
-    }
-
-    @FXML
-    private void clicCancelar(ActionEvent event) {
-        abandonarPantalla();
-    }
-    
-    
-    private void actualizaRegistro(String nombre,String apellidoPaterno,String apellidoMaterno,
-        String correo, String password){
-        try{
-            String url = Constantes.URL_BASE + "usuarios/modificar";
-            String parametros = "nombre="+nombre+"&apellidoPaterno="+apellidoPaterno+"&apellidoMaterno="+apellidoMaterno+"&correo="+correo+"&password="+password;
-            
-            String resultado = ConexionServiciosWeb.consumirServicioPOST(url, parametros);
-            Gson gson = new Gson();
-            RespuestaLogin respuesta = gson.fromJson(resultado, RespuestaLogin.class);
-            respuesta.setNombre(nombre);
-            if(!respuesta.getError()){
-                Utilidades.mostrarAlertaSimple("Registro modificado", "El usuario "+
-                respuesta.getNombre()+" fue modficado con exito ", Alert.AlertType.INFORMATION);
-                //irPantallaAdmin();
-                Stage stage = (Stage) this.btActualizar.getScene().getWindow();
-                stage.close();
-                cargarInformacionUsuarios();
-                
-            }else{
-                Utilidades.mostrarAlertaSimple("Error al modificar el registro",
-                        respuesta.getMensaje(), Alert.AlertType.ERROR);
-            }
-        }catch (Exception e){
-            Utilidades.mostrarAlertaSimple("Error de conexión",
-                e.getMessage(), Alert.AlertType.ERROR);
-        }
-    }
-    
-    
-    
-    
     
     private void abandonarPantalla() {
         Stage stage = (Stage) btCancelar.getScene().getWindow();        
@@ -170,5 +98,78 @@ public class FXMLActualizaUsuarioController implements Initializable {
         }
         
     }    
+    public void inicializarInformacionVentana(int idUsuario, String nombre, String aPaterno, String aMaterno, String correo, String password){
+        this.idUsuario = idUsuario;      
+        tfCorreoElectronico.setDisable(true);
+        tfNombre.setText(nombre);
+        tfApellidoPaterno.setText(aPaterno);
+        tfApellidoMaterno.setText(aMaterno);
+        tfCorreoElectronico.setText(correo);
+        tfContrasena.setText(password);
+    }
+
+
+    @FXML
+    private void clicActualizarInformacion(ActionEvent event) {
+        //String idUsuario = ac.tfBusquedaUsuario.getText();
+        String nombre = tfNombre.getText();
+        String apellidoPaterno = tfApellidoPaterno.getText();
+        String apellidoMaterno = tfApellidoMaterno.getText();
+        String correo = tfCorreoElectronico.getText();
+        String password= tfContrasena.getText();
+        //String idEstatus = tfIdEstatus.getText();
+        
+
+        if (!nombre.isEmpty() && !apellidoPaterno.isEmpty() && !apellidoMaterno.isEmpty()
+                &&!correo.isEmpty()  && !password.isEmpty()){
+            //verificarInicioSesion(noPersonal, password);
+            //todo
+            //recuperaDatosTabla();
+            actualizaRegistro(idUsuario,nombre, apellidoPaterno,apellidoMaterno,correo, password);
+        }else{ 
+            Utilidades.mostrarAlertaSimple("Campos requeridos", 
+                    "Es necesario ingresar todos los campos", 
+                    Alert.AlertType.WARNING);
+        }
+    }
+
+    @FXML
+    private void clicCancelar(ActionEvent event) {
+        abandonarPantalla();
+    }
+    
+    
+    private void actualizaRegistro(int idUsuario,String nombre,String apellidoPaterno,String apellidoMaterno,
+        String correo, String password){
+        
+        try{
+            String url = Constantes.URL_BASE + "usuarios/modificar";
+            String parametros = "idUsuario="+idUsuario+"&nombre="+nombre+"&apellidoPaterno="+apellidoPaterno+"&apellidoMaterno="+apellidoMaterno+"&correo="+correo+"&password="+password;
+            
+            String resultado = ConexionServiciosWeb.consumirServicioPUT(url, parametros);
+            Gson gson = new Gson();
+            Respuesta respuesta = gson.fromJson(resultado, Respuesta.class);            
+            if (!respuesta.getError()) {                
+                Utilidades.mostrarAlertaSimple("Usuario modificado", 
+                        " Usuario modificado correctamente "
+                        , Alert.AlertType.INFORMATION);
+                Stage stage = (Stage) this.btActualizar.getScene().getWindow();
+                stage.close();
+                cargarInformacionUsuarios();
+            }else{
+                Utilidades.mostrarAlertaSimple("Error al editar el usuario", respuesta.getMensaje(),
+                        Alert.AlertType.ERROR);
+            }
+        }catch (Exception e){
+            Utilidades.mostrarAlertaSimple("Error de conexión",
+                e.getMessage(), Alert.AlertType.ERROR);
+        }
+    }
+    
+    
+    
+    
+    
+    
     
 }

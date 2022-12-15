@@ -53,6 +53,7 @@ public class FXMLDashboardController implements Initializable {
 
     @FXML
     private void clicIrEmpresa(ActionEvent event) {
+        irPantallaEmpresa();
     }
 
     @FXML
@@ -70,6 +71,22 @@ public class FXMLDashboardController implements Initializable {
     private void irPantallaAdministrador(){
         try{
             Parent vista = FXMLLoader.load(getClass().getResource("FXMLAdminUsuarios.fxml"));
+            Scene escenaFormulario = new Scene(vista);
+            Stage escenarioFormulario = new Stage();
+            escenarioFormulario.setScene(escenaFormulario);
+            escenarioFormulario.initModality(Modality.APPLICATION_MODAL);
+            escenarioFormulario.showAndWait();
+        }catch(IOException ex){
+            ex.printStackTrace();
+        }
+
+       
+    }
+    
+    
+    private void irPantallaEmpresa(){
+        try{
+            Parent vista = FXMLLoader.load(getClass().getResource("FXMLAdminEmpresa.fxml"));
             Scene escenaFormulario = new Scene(vista);
             Stage escenarioFormulario = new Stage();
             escenarioFormulario.setScene(escenaFormulario);

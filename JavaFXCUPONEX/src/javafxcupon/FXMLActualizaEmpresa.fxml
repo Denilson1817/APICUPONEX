@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="534.0" prefWidth="828.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxcupon.FXMLActualizaEmpresaController">
+   <children>
+      <Button fx:id="btnCancelar" layoutX="509.0" layoutY="463.0" mnemonicParsing="false" onAction="#clicCancelar" prefHeight="27.0" prefWidth="89.0" text="Cancelar" />
+      <Button fx:id="btnGuardar" layoutX="621.0" layoutY="463.0" mnemonicParsing="false" onAction="#clicGuardar" prefHeight="27.0" prefWidth="89.0" text="Guardar" />
+      <Label layoutX="73.0" layoutY="56.0" text="Editar empresa">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      <TextField fx:id="tfIdEstatus" layoutX="553.0" layoutY="347.0" promptText="idEstatus" />
+      <TextField fx:id="tfRFC" disable="true" layoutX="553.0" layoutY="266.0" promptText="rfc" />
+      <TextField fx:id="tfPaginaWeb" layoutX="553.0" layoutY="188.0" promptText="Pagina web" />
+      <TextField fx:id="tfTelefono" layoutX="553.0" layoutY="116.0" promptText="Telefono" />
+      <TextField fx:id="tfCiudad" layoutX="317.0" layoutY="347.0" promptText="Ciudad" />
+      <TextField fx:id="tfCP" layoutX="317.0" layoutY="266.0" promptText="Codigo postal" />
+      <TextField fx:id="tfDireccion" layoutX="317.0" layoutY="188.0" promptText="Direccion" />
+      <TextField fx:id="tfCorreo" layoutX="317.0" layoutY="116.0" promptText="Correo" />
+      <TextField fx:id="tfNombreRepresentante" layoutX="42.0" layoutY="347.0" promptText="Nombre representante" />
+      <TextField fx:id="tfNombreComercial" layoutX="42.0" layoutY="273.0" promptText="Nombre comercial" />
+      <TextField fx:id="tfNombre" layoutX="42.0" layoutY="194.0" promptText="Nombre" />
+      <Label layoutX="42.0" layoutY="163.0" text="Nombre" />
+      <Label layoutX="42.0" layoutY="250.0" text="Nombre comercial" />
+      <Label layoutX="42.0" layoutY="322.0" text="Nombre representante" />
+      <Label layoutX="317.0" layoutY="84.0" text="Correo" />
+      <Label layoutX="317.0" layoutY="163.0" text="Direccion" />
+      <Label layoutX="317.0" layoutY="242.0" text="Codigo postal" />
+      <Label layoutX="317.0" layoutY="322.0" text="Ciudad" />
+      <Label layoutX="554.0" layoutY="93.0" text="Telefono" />
+      <Label layoutX="554.0" layoutY="163.0" text="Pagina web" />
+      <Label layoutX="554.0" layoutY="242.0" text="RFC" />
+      <Label layoutX="554.0" layoutY="322.0" text="idEstatus" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" nodeOrientation="LEFT_TO_RIGHT" prefHeight="520.0" prefWidth="1062.0" style="-fx-background-color: #5CCD59;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxcupon.FXMLAdminEmpresaController">
+   <children>
+      <TableView fx:id="tvEmpresa" layoutX="22.0" layoutY="108.0" prefHeight="323.0" prefWidth="1021.0">
+        <columns>
+          <TableColumn fx:id="colidEmpresa" prefWidth="75.0" text="idEmpresa" />
+          <TableColumn fx:id="colNombre" prefWidth="75.0" text="Nombre" />
+            <TableColumn fx:id="colNombreComercial" prefWidth="112.0" text="Nombre comercial" />
+            <TableColumn fx:id="colRepresentanteLegal" prefWidth="125.0" text="Representante legal" />
+            <TableColumn fx:id="colEmail" prefWidth="106.0" text="email" />
+            <TableColumn fx:id="colDireccion" prefWidth="75.0" text="Direccion" />
+            <TableColumn fx:id="colCP" prefWidth="75.0" text="CP" />
+            <TableColumn fx:id="colCiudad" prefWidth="75.0" text="Ciudad" />
+            <TableColumn fx:id="colTelefono" prefWidth="75.0" text="Telefono" />
+            <TableColumn fx:id="colPaginaWeb" prefWidth="75.0" text="Pagina web" />
+            <TableColumn fx:id="colRFC" prefWidth="75.0" text="RFC" />
+            <TableColumn fx:id="colEstatus" prefWidth="75.0" text="Estatus" />
+        </columns>
+      </TableView>
+      <Label layoutX="50.0" layoutY="39.0" text="Administrar Empresas" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnEliminar" layoutX="928.0" layoutY="67.0" mnemonicParsing="false" onAction="#clicIrEliminar" prefHeight="27.0" prefWidth="115.0" text="Eliminar" />
+      <Button fx:id="btnEditar" layoutX="787.0" layoutY="67.0" mnemonicParsing="false" onAction="#clicIrEditar" prefHeight="27.0" prefWidth="115.0" text="Editar" />
+      <Button fx:id="btnRegistrar" layoutX="644.0" layoutY="67.0" mnemonicParsing="false" onAction="#clicIrRegistrar" prefHeight="27.0" prefWidth="115.0" text="Registrar" />
+      <Button fx:id="btnSallir" defaultButton="true" layoutX="883.0" layoutY="451.0" mnemonicParsing="false" onAction="#clicIrSalir" prefHeight="27.0" prefWidth="160.0" text="Salir" />
+   </children>
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
+</AnchorPane>

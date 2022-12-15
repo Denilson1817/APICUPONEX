@@ -7,7 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="457.0" prefWidth="662.0" style="-fx-background-color: #184266;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxcupon.FXMLAdminUsuariosController">
+<AnchorPane id="AnchorPane" nodeOrientation="LEFT_TO_RIGHT" prefHeight="457.0" prefWidth="662.0" style="-fx-background-color: #184266;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxcupon.FXMLAdminUsuariosController">
    <children>
       <Label layoutX="16.0" layoutY="36.0" text="Administrar usuarios" textFill="WHITE">
          <font>
@@ -24,7 +24,7 @@
             <TableColumn fx:id="colApellidoPaterno" prefWidth="132.0" text="Apellido Parterno" />
             <TableColumn fx:id="colApellidoMaterno" prefWidth="124.0" text="Apellido Marterno" />
             <TableColumn fx:id="colCorreo" prefWidth="134.0" text="correo" />
-            <TableColumn fx:id="colEstatus" prefWidth="66.0" text="IdEstatus" />
+            <TableColumn fx:id="colEstatus" prefWidth="66.0" text="Password" />
         </columns>
       </TableView>
       <Button fx:id="btRegresar" defaultButton="true" layoutX="572.0" layoutY="416.0" mnemonicParsing="false" onAction="#clicRegresar" text="Regresar" />

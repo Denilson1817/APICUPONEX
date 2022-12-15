@@ -112,19 +112,6 @@ public class FXMLUsuariosController implements Initializable {
     
     
     
-    
-    private void irPantallaAdmin(){
-        try{
-            Parent vistaPrincipal = FXMLLoader.load(getClass().getResource("FXMLAdminUsuarios.fxml"));
-            Scene escenaPrincipal = new Scene(vistaPrincipal);
-            Stage escenarioBase = (Stage) tfNombre.getScene().getWindow();
-            escenarioBase.setScene(escenaPrincipal);
-            escenarioBase.show();
-        }catch(Exception e){
-         Utilidades.mostrarAlertaSimple("Error", "Error al cargar la pantalla principal", Alert.AlertType.ERROR);  
-         }  
-    }
-    
     private void abandonarPantalla() {
         Stage stage = (Stage) btCancelar.getScene().getWindow();        
         stage.close();        

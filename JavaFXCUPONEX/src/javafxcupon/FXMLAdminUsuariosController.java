@@ -29,6 +29,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafxcuponex.modelo.ConexionServiciosWeb;
+import javafxcuponex.pojos.Respuesta;
 import javafxcuponex.pojos.Usuarios;
 import javafxcuponex.util.Constantes;
 import javafxcuponex.util.Utilidades;
@@ -60,14 +61,13 @@ public class FXMLAdminUsuariosController implements Initializable {
     @FXML
     private Button btRegresar;
     
-    
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         configurarTabla();
-        cargarInfoMedicoWS();
+        cargarInfoUsuarioWS();
     }
     
     private void configurarTabla(){
@@ -82,7 +82,7 @@ public class FXMLAdminUsuariosController implements Initializable {
         
     }
     
-    private void cargarInfoMedicoWS(){
+    private void cargarInfoUsuarioWS(){
         String urlWS = Constantes.URL_BASE+ "usuarios/all";
         try{
             String jsonRespuesta = ConexionServiciosWeb.consumirServicioGET(urlWS);
@@ -99,7 +99,7 @@ public class FXMLAdminUsuariosController implements Initializable {
         }    
     }
     
-    @FXML 
+    @FXML
     private void clicIrAgregarUsuario(ActionEvent event){
         try{
             Parent vista = FXMLLoader.load(getClass().getResource("FXMLUsuarios.fxml"));
@@ -161,24 +161,61 @@ public class FXMLAdminUsuariosController implements Initializable {
 
 
         }else{
-            Utilidades.mostrarAlertaSimple("Selecciona un registro", "Debes seleccionar un administrador para su modificación"
+            Utilidades.mostrarAlertaSimple("No hay ningún registro seleccionado", "Selecciona un usuario para su modificación"
                     , Alert.AlertType.WARNING);
         }
     }
 
     @FXML
-    private void clicIrEliminarUsuario(ActionEvent event) {
-        try{
-            Parent vista = FXMLLoader.load(getClass().getResource("FXMLUsuarios.fxml"));
-            Scene escenaFormulario = new Scene(vista);
-            Stage escenarioFormulario = new Stage();
-            escenarioFormulario.setScene(escenaFormulario);
-            escenarioFormulario.initModality(Modality.APPLICATION_MODAL);
-            escenarioFormulario.showAndWait();
-        }catch(IOException ex){
-            ex.printStackTrace();
-        }
+    private void clicIrEliminarUsuario(ActionEvent event) {  
+        int filaSeleccionada = tbUsuarios.getSelectionModel().getSelectedIndex();
+        if(filaSeleccionada >= 0){
+            try{  
+                int id = listaUsuarios.get(filaSeleccionada).getIdUsuario();
+                    eliminar(id);
+                    listaUsuarios.clear();
+                    cargarInfoUsuarioWS();
+                
+            }catch(Exception e){
+                Utilidades.mostrarAlertaSimple("Error", "No se ha podido cargar la ventana principal -"+e, Alert.AlertType.ERROR);                
+            }
+
+
+        }else{
+            Utilidades.mostrarAlertaSimple("Selecciona un registro", "Debes seleccionar un administrador para su modificación"
+                    , Alert.AlertType.WARNING);
+        }   
     }
+    
+    
+    private void eliminar(int idUsuario){
+        
+        try{
+            
+            String urlServicio = Constantes.URL_BASE+"usuarios/eliminar";
+            
+            String parametros = "idUsuario="+idUsuario;
+            String resultado = ConexionServiciosWeb.consumirServicioDELTE(urlServicio, parametros);
+            Gson gson = new Gson() ;
+            Respuesta respuesta = gson.fromJson(resultado, Respuesta.class);
+            
+            if (!respuesta.getError()) {
+                
+                Utilidades.mostrarAlertaSimple("Usuario eliminado", 
+                        " Usuario eliminado correctamente "
+                        , Alert.AlertType.INFORMATION);
+            }else{
+                Utilidades.mostrarAlertaSimple("Error al eliminar el administrador", respuesta.getMensaje(),
+                        Alert.AlertType.ERROR);
+            }            
+            
+            
+        }catch(Exception e){
+            Utilidades.mostrarAlertaSimple("Error de conexión", e.getMessage(), Alert.AlertType.ERROR);            
+        }
+        
+    }
+
     
 
     @FXML
@@ -191,6 +228,7 @@ public class FXMLAdminUsuariosController implements Initializable {
         Stage stage = (Stage) btRegresar.getScene().getWindow();        
         stage.close();        
     }
+
     
     
 }
