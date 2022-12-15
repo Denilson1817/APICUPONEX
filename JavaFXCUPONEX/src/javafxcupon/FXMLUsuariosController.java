@@ -15,6 +15,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafxcuponex.modelo.ConexionServiciosWeb;
@@ -38,6 +39,8 @@ public class FXMLUsuariosController implements Initializable {
     private TextField tfApellidoPaterno;
     @FXML
     private TextField tfApellidoMaterno;
+    @FXML
+    private Button btCancelar;
     
     /**
      * Initializes the controller class.
@@ -74,8 +77,9 @@ public class FXMLUsuariosController implements Initializable {
 
     @FXML
     private void btCancelar(ActionEvent event) {
-        irPantallaAdmin();
+        //irPantallaAdmin();
         //System.out.println("clic sobre el boton");
+        abandonarPantalla();
 
         
     }
@@ -94,7 +98,7 @@ public class FXMLUsuariosController implements Initializable {
             if(!respuesta.getError()){
                 Utilidades.mostrarAlertaSimple("Registro guardado", "El usuario "+
                 respuesta.getNombre()+" fue registrado con exito ", Alert.AlertType.INFORMATION);
-                irPantallaAdmin();
+                //irPantallaAdmin();
                 
             }else{
                 Utilidades.mostrarAlertaSimple("Error al guardar el registro",
@@ -119,6 +123,11 @@ public class FXMLUsuariosController implements Initializable {
         }catch(Exception e){
          Utilidades.mostrarAlertaSimple("Error", "Error al cargar la pantalla principal", Alert.AlertType.ERROR);  
          }  
+    }
+    
+    private void abandonarPantalla() {
+        Stage stage = (Stage) btCancelar.getScene().getWindow();        
+        stage.close();        
     }
 
     

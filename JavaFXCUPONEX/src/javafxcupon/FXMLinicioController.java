@@ -60,7 +60,7 @@ public class FXMLinicioController implements Initializable {
             verificarInicioSesion(nombre, password);
         }else{ 
             Utilidades.mostrarAlertaSimple("Campos requeridos", 
-                    "Es necesario ingresar el numero de personal y/o contrasena", 
+                    "Es necesario ingresar el nombre y/o contraseña", 
                     Alert.AlertType.WARNING);
         }
         
@@ -94,7 +94,7 @@ public class FXMLinicioController implements Initializable {
     
     private void irPantallaPrincipal(){
        try{
-           Parent vistaPrincipal = FXMLLoader.load(getClass().getResource("FXMLPrincipal.fxml"));
+           Parent vistaPrincipal = FXMLLoader.load(getClass().getResource("FXMLDashboard.fxml"));
            Scene escenaPrincipal = new Scene(vistaPrincipal);
            Stage escenarioBase = (Stage) tfNombre.getScene().getWindow();
            escenarioBase.setScene(escenaPrincipal);

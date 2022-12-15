@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -7,16 +9,35 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="248.0" prefWidth="430.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxcupon.FXMLinicioController">
+<AnchorPane id="AnchorPane" prefHeight="437.0" prefWidth="362.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxcupon.FXMLinicioController">
    <children>
-      <Label alignment="TOP_CENTER" layoutX="93.0" layoutY="23.0" prefHeight="48.0" prefWidth="245.0" text="CUPONEX">
+      <Label alignment="TOP_CENTER" layoutX="86.0" layoutY="42.0" prefHeight="48.0" prefWidth="245.0" text="CUPONEX" textFill="#242528">
          <font>
-            <Font size="27.0" />
+            <Font name="System Bold Italic" size="33.0" />
          </font>
       </Label>
-      <Button layoutX="176.0" layoutY="209.0" mnemonicParsing="false" onAction="#clicIniciarSesion" prefHeight="25.0" prefWidth="80.0" text="Ingresar" />
+      <Button alignment="CENTER" defaultButton="true" layoutX="128.0" layoutY="372.0" mnemonicParsing="false" onAction="#clicIniciarSesion" prefHeight="27.0" prefWidth="161.0" text="Iniciar sesion" textAlignment="CENTER">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
       <Label fx:id="lbResultado" layoutX="17.0" layoutY="177.0" prefHeight="15.0" prefWidth="401.0" />
-      <TextField fx:id="tfNombre" layoutX="134.0" layoutY="71.0" promptText="Usuario" />
-      <PasswordField fx:id="pfPassword" layoutX="134.0" layoutY="130.0" promptText="Contraseña" />
+      <TextField fx:id="tfNombre" alignment="CENTER" layoutX="118.0" layoutY="264.0" prefHeight="27.0" prefWidth="180.0" promptText="Escribe tu usuario">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor></TextField>
+      <PasswordField fx:id="pfPassword" alignment="CENTER" layoutX="118.0" layoutY="313.0" prefHeight="27.0" prefWidth="181.0" promptText="Escribe tu contraseña">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor></PasswordField>
+      <ImageView fitHeight="130.0" fitWidth="142.0" layoutX="143.0" layoutY="112.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagenes/login.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="173.0" layoutY="81.0" text="Bienvenido">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

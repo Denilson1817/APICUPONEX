@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="543.0" prefWidth="888.0" style="-fx-background-color: #184266;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxcupon.FXMLDashboardController">
+   <children>
+      <VBox layoutX="7.0" layoutY="7.0" prefHeight="526.0" prefWidth="257.0" style="-fx-background-color: #286BA6;">
+         <children>
+            <Pane prefHeight="95.0" prefWidth="257.0" />
+            <Button fx:id="clicIrAdministrador" contentDisplay="TOP" mnemonicParsing="false" onAction="#clicIrAdministrador" prefHeight="57.0" prefWidth="257.0" style="-fx-background-color: #3794E6;" text="Administrador">
+               <graphic>
+                  <ImageView fitHeight="43.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagenes/admin.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="clicIrEmpresa" contentDisplay="TOP" mnemonicParsing="false" onAction="#clicIrEmpresa" prefHeight="72.0" prefWidth="257.0" style="-fx-background-color: #3794E6;" text="Empresas">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="43.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagenes/empresa.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="clicIrSucursales" contentDisplay="TOP" mnemonicParsing="false" onAction="#clicIrSucursales" prefHeight="72.0" prefWidth="257.0" style="-fx-background-color: #3794E6;" text="Sucursales">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="43.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagenes/sucursal.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="clicirPromociones" contentDisplay="TOP" mnemonicParsing="false" onAction="#clicirPromociones" prefHeight="72.0" prefWidth="257.0" style="-fx-background-color: #3794E6;" text="Promociones">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="43.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagenes/promociones.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="clicIrCerrarSesion" contentDisplay="TOP" mnemonicParsing="false" onAction="#clicIrCerrarSesion" prefHeight="72.0" prefWidth="257.0" style="-fx-background-color: #3794E6;" text="Cerrar sesion">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="43.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagenes/closeSesion.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </children>
+      </VBox>
+      <Label layoutX="517.0" layoutY="85.0" text="CUPONEX" textFill="WHITE">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="466.0" layoutY="39.0" text="Pagina de inicio" textFill="WHITE">
+         <font>
+            <Font size="31.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

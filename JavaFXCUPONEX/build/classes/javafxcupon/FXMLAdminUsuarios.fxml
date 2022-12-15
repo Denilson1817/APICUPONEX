@@ -7,22 +7,16 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="457.0" prefWidth="662.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxcupon.FXMLAdminUsuariosController">
+<AnchorPane id="AnchorPane" prefHeight="457.0" prefWidth="662.0" style="-fx-background-color: #184266;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxcupon.FXMLAdminUsuariosController">
    <children>
-      <Label layoutX="50.0" layoutY="36.0" text="Administrar usuarios">
+      <Label layoutX="16.0" layoutY="36.0" text="Administrar usuarios" textFill="WHITE">
          <font>
-            <Font size="19.0" />
+            <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="50.0" layoutY="88.0" text="Buscar usuario">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
-      <TextField fx:id="tfBusquedaUsuario" layoutX="50.0" layoutY="125.0" prefHeight="25.0" prefWidth="183.0" promptText="Busqueda por id" />
-      <Button layoutX="283.0" layoutY="125.0" mnemonicParsing="false" onAction="#clicIrAgregarUsuario" prefHeight="25.0" prefWidth="81.0" text="Agregar" />
-      <Button layoutX="382.0" layoutY="125.0" mnemonicParsing="false" onAction="#clicModificarUsuario" prefHeight="25.0" prefWidth="81.0" text="Modificar" />
-      <Button layoutX="488.0" layoutY="125.0" mnemonicParsing="false" onAction="#clicIrEliminarUsuario" prefHeight="25.0" prefWidth="81.0" text="Eliminar" />
+      <Button layoutX="348.0" layoutY="125.0" mnemonicParsing="false" onAction="#clicIrAgregarUsuario" prefHeight="25.0" prefWidth="81.0" text="Agregar" />
+      <Button layoutX="453.0" layoutY="125.0" mnemonicParsing="false" onAction="#clicModificarUsuario" prefHeight="25.0" prefWidth="81.0" text="Modificar" />
+      <Button layoutX="558.0" layoutY="125.0" mnemonicParsing="false" onAction="#clicIrEliminarUsuario" prefHeight="25.0" prefWidth="81.0" text="Eliminar" />
       <TableView fx:id="tbUsuarios" layoutX="16.0" layoutY="174.0" prefHeight="206.0" prefWidth="629.0">
         <columns>
           <TableColumn fx:id="colIdUsuario" prefWidth="68.0" text="IdUsuario" />
@@ -33,5 +27,6 @@
             <TableColumn fx:id="colEstatus" prefWidth="66.0" text="IdEstatus" />
         </columns>
       </TableView>
+      <Button fx:id="btRegresar" defaultButton="true" layoutX="572.0" layoutY="416.0" mnemonicParsing="false" onAction="#clicRegresar" text="Regresar" />
    </children>
 </AnchorPane>

@@ -21,6 +21,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -39,7 +40,6 @@ import javafxcuponex.util.Utilidades;
  */
 public class FXMLAdminUsuariosController implements Initializable {
     
-    @FXML
     public TextField tfBusquedaUsuario;
     @FXML
     private TableView<Usuarios> tbUsuarios;
@@ -57,6 +57,8 @@ public class FXMLAdminUsuariosController implements Initializable {
     private TableColumn  colEstatus;
     
     private ObservableList<Usuarios> listaUsuarios; 
+    @FXML
+    private Button btRegresar;
     
     
     /**
@@ -75,7 +77,7 @@ public class FXMLAdminUsuariosController implements Initializable {
         colApellidoPaterno.setCellValueFactory(new PropertyValueFactory("apellidoPaterno"));
         colApellidoMaterno.setCellValueFactory(new PropertyValueFactory("apellidoMaterno"));
         colCorreo.setCellValueFactory(new PropertyValueFactory("correo"));
-        colEstatus.setCellValueFactory(new PropertyValueFactory("idEstatus"));
+        colEstatus.setCellValueFactory(new PropertyValueFactory("password"));
         
         
     }
@@ -100,12 +102,12 @@ public class FXMLAdminUsuariosController implements Initializable {
     @FXML 
     private void clicIrAgregarUsuario(ActionEvent event){
         try{
-     Parent vista = FXMLLoader.load(getClass().getResource("FXMLUsuarios.fxml"));
-         Scene escenaFormulario = new Scene(vista);
-         Stage escenarioFormulario = new Stage();
-         escenarioFormulario.setScene(escenaFormulario);
-         escenarioFormulario.initModality(Modality.APPLICATION_MODAL);
-         escenarioFormulario.showAndWait();
+            Parent vista = FXMLLoader.load(getClass().getResource("FXMLUsuarios.fxml"));
+            Scene escenaFormulario = new Scene(vista);
+            Stage escenarioFormulario = new Stage();
+            escenarioFormulario.setScene(escenaFormulario);
+            escenarioFormulario.initModality(Modality.APPLICATION_MODAL);
+            escenarioFormulario.showAndWait();
         }catch(IOException ex){
             ex.printStackTrace();
         }
@@ -124,15 +126,43 @@ public class FXMLAdminUsuariosController implements Initializable {
 
     @FXML
     private void clicModificarUsuario(ActionEvent event) {
-        try{
-            Parent vista = FXMLLoader.load(getClass().getResource("FXMLActualizaUsuario.fxml"));
-            Scene escenaFormulario = new Scene(vista);
-            Stage escenarioFormulario = new Stage();
-            escenarioFormulario.setScene(escenaFormulario);
-            escenarioFormulario.initModality(Modality.APPLICATION_MODAL);
-            escenarioFormulario.showAndWait();
-        }catch(IOException ex){
-            ex.printStackTrace();
+               
+        
+        int filaSeleccionada = tbUsuarios.getSelectionModel().getSelectedIndex();
+
+        if(filaSeleccionada >= 0){
+
+            try{
+                
+                int idAdministradorSeleccionado = listaUsuarios.get(filaSeleccionada).getIdUsuario();
+                String nombre = listaUsuarios.get(filaSeleccionada).getNombre();
+                String apellidoPaterno = listaUsuarios.get(filaSeleccionada).getApellidoPaterno();
+                String apellidoMaterno = listaUsuarios.get(filaSeleccionada).getApellidoMaterno();
+                String correo = listaUsuarios.get(filaSeleccionada).getCorreo();
+                String password = listaUsuarios.get(filaSeleccionada).getPassword();            
+
+                FXMLLoader loadController = new FXMLLoader(getClass().getResource("FXMLActualizaUsuario.fxml"));
+                Parent vistaFormulario = loadController.load();
+                FXMLActualizaUsuarioController controllerFormulario = loadController.getController();
+                
+                controllerFormulario.inicializarInformacionVentana(idAdministradorSeleccionado, nombre, apellidoPaterno, apellidoMaterno, correo, password);
+                
+                controllerFormulario.guardaUsuarioSeleccionado(listaUsuarios, tbUsuarios);
+                
+                Scene escenaFormulario = new Scene(vistaFormulario);
+                Stage escenarioFormulario = new Stage();
+                escenarioFormulario.setScene(escenaFormulario);
+                escenarioFormulario.initModality(Modality.APPLICATION_MODAL);
+                escenarioFormulario.showAndWait();
+                
+            }catch(IOException e){
+                Utilidades.mostrarAlertaSimple("Error", "No se ha podido cargar la ventana principal -"+e, Alert.AlertType.ERROR);                
+            }
+
+
+        }else{
+            Utilidades.mostrarAlertaSimple("Selecciona un registro", "Debes seleccionar un administrador para su modificación"
+                    , Alert.AlertType.WARNING);
         }
     }
 
@@ -148,6 +178,18 @@ public class FXMLAdminUsuariosController implements Initializable {
         }catch(IOException ex){
             ex.printStackTrace();
         }
+    }
+    
+
+    @FXML
+    private void clicRegresar(ActionEvent event) {
+        abandonarPantalla();
+    }
+    
+    
+    private void abandonarPantalla() {
+        Stage stage = (Stage) btRegresar.getScene().getWindow();        
+        stage.close();        
     }
     
     
