@@ -16,19 +16,19 @@ public class Usuario {
     private String apellidoMaterno;
     private String correo; 
     private String password;
-    private String idEstatus; 
+
 
     public Usuario() {
     }
 
-    public Usuario(Integer idUsuario, String nombre, String apellidoPaterno, String apellidoMaterno, String correo, String password, String idEstatus) {
+    public Usuario(Integer idUsuario, String nombre, String apellidoPaterno, String apellidoMaterno, String correo, String password) {
         this.idUsuario = idUsuario;
         this.nombre = nombre;
         this.apellidoPaterno = apellidoPaterno;
         this.apellidoMaterno = apellidoMaterno;
         this.correo = correo;
         this.password = password;
-        this.idEstatus = idEstatus;
+        
     }
     
 
@@ -80,13 +80,6 @@ public class Usuario {
         this.password = password;
     }
     
-    public String getIdEstatus() {
-        return idEstatus;
-    }
-
-    public void setIdEstatus(String idEstatus) {
-        this.idEstatus = idEstatus;
-    }
-
+    
     
 }

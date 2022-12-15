@@ -5,33 +5,36 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="usuarios">
     
+    
+    
     <select id="usuarioLogin" resultType="int" parameterType="pojos.Usuario" >
         SELECT idUsuario, nombre, apellidoPaterno, apellidoMaterno
-        FROM usuarios WHERE nombre = #{nombre} AND password = #{password}
+        FROM usuario WHERE nombre = #{nombre} AND password = #{password}
     </select>
     
     <select id="getById" resultType="pojos.Usuario" parameterType="int" >
-        SELECT * FROM usuarios WHERE idUsuario = #{idUsuario}
+        SELECT * FROM usuario WHERE idUsuario = #{idUsuario}
         
     </select>
     
     <select id="getAllUsuarios" resultType="pojos.Usuario"> 
-       SELECT idUsuario, usuarios.nombre,apellidoPaterno, apellidoMaterno, correo, password, idEstatus
-        FROM usuarios
-        WHERE idEstatus = 1
+       SELECT idUsuario,nombre, apellidoPaterno, apellidoMaterno, correo, password
+        FROM usuario
     </select>
     
     <insert id = "registrar" parameterType="pojos.Usuario" > 
-    INSERT INTO usuarios (idUsuario, nombre, apellidoPaterno, apellidoMaterno, correo, password, idEstatus)
-    VALUES (#{idUsuario},#{nombre},#{apellidoPaterno}, #{apellidoMaterno}, #{correo},#{password},1)
+    INSERT INTO usuario (idUsuario, nombre, apellidoPaterno, apellidoMaterno, correo, password)
+    VALUES (#{idUsuario},#{nombre},#{apellidoPaterno}, #{apellidoMaterno}, #{correo},#{password})
     </insert>
     
     <update id="modificar" parameterType ="pojos.Usuario"> 
-    UPDATE usuarios SET nombre = #{nombre}, apellidoPaterno = #{apellidoPaterno}, 
-    apellidoMaterno = #{apellidoMaterno}, password = #{password}, idEstatus = #{idEstatus}
+    UPDATE usuario SET nombre = #{nombre}, apellidoPaterno = #{apellidoPaterno}, 
+    apellidoMaterno = #{apellidoMaterno}, correo =#{correo},password =#{password}
     WHERE idUsuario = #{idUsuario}
     </update>
+
     
+        
     <update id="eliminar" parameterType="int">
     UPDATE usuarios SET idEstatus = 2
     WHERE idUsuario = #{idUsuario}

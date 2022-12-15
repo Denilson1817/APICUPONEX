@@ -128,44 +128,46 @@ public class UsuariosWS {
     @PUT
     @Produces(MediaType.APPLICATION_JSON)
     public Respuesta modificar(
-            @FormParam("IdUsuario") Integer IdUsuario,
+            @FormParam("idUsuario") Integer idUsuario,
             @FormParam("nombre") String nombre,
-            @FormParam("apellidoPaterno") String apellidoPaterno, 
+            @FormParam("apellidoPaterno") String apellidoPaterno,
             @FormParam("apellidoMaterno") String apellidoMaterno,
+            @FormParam("correo") String correo,
             @FormParam("password") String password){
-        Usuario usuarioNuevo = new Usuario();
-        usuarioNuevo.setIdUsuario(IdUsuario);
-        usuarioNuevo.setNombre(nombre);
-        usuarioNuevo.setApellidoPaterno(apellidoPaterno);
-        usuarioNuevo.setApellidoMaterno(apellidoMaterno);
-        usuarioNuevo.setPassword(password);
-        //usuarioNuevo.setIdEstatus(idEstatus);
+        
+        Usuario usuario = new Usuario();
+        usuario.setIdUsuario(idUsuario);
+        usuario.setCorreo(correo);
+        usuario.setNombre(nombre);
+        usuario.setApellidoPaterno(apellidoPaterno);
+        usuario.setApellidoMaterno(apellidoMaterno);
+        usuario.setPassword(password);
         
         Respuesta respuestaWS = new Respuesta();
-        SqlSession conexionBD = MyBatisUtil.getSession();
-        
-        if(conexionBD != null ){
+        SqlSession conexionBD = new MyBatisUtil().getSession();
+        if(conexionBD != null){
             try{
-                int resultado = conexionBD.update("usuarios.modificar",usuarioNuevo);
+                int resultado = conexionBD.update("usuarios.modificar", usuario);
                 conexionBD.commit();
-                if(resultado > 0 ){
+                if(resultado > 0){
                     respuestaWS.setError(false);
-                    respuestaWS.setMensaje("Informacion del usuario actualizada");
+                    respuestaWS.setMensaje("Información del usuario modificada con éxito");
                 }else{
                     respuestaWS.setError(true);
-                    respuestaWS.setMensaje("Error al registrar la actualizar la informacion del usuario");
+                    respuestaWS.setMensaje("No se pudo actualizar el usuario, intentelo de nuevo más tarde");
+                    
                 }
             }catch(Exception e){
                 respuestaWS.setError(true);
                 respuestaWS.setMensaje(e.getMessage());
-           }finally{
+            }finally{
                 conexionBD.close();
-           }
-       }else{
+            }
+        }else{
             respuestaWS.setError(true);
-            respuestaWS.setMensaje("Servicio no disponible, intente más tarde");  
-       }
-       return respuestaWS; 
+            respuestaWS.setMensaje("Servicio no disponible, intentelo más tarde.");
+        }
+        return respuestaWS;
     }
     
     @Path("eliminar")
